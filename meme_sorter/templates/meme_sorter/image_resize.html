@@ -1,0 +1,52 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<a href='{% url "index" %}'>back</a>
+<h3>image data:</h3>
+
+{% for nazwa, dana in dane.items %}
+    {{ nazwa }}: <span class="badge badge-info">{{ dana }}</span>
+    <br/>
+{% endfor %}
+
+<a href="{{ meme.image.url }}" download>download original</a> 
+<br><br>
+
+<form method="POST">
+    <label for="height">height: </label><input type="number" name="height" value="{{ new_dims.height }}" id="h_in" {{ set_readonly }}>
+        <button onclick="document.getElementById('h_in').value=''" type='button'>X</button>
+    <br>
+    <label for="width">width: </label><input type="number" name="width" value="{{ new_dims.width }}" id="w_in" {{ set_readonly }}>
+        <button onclick="document.getElementById('w_in').value=''" type='button'>X</button>
+    <br><label for="preserve_ratio">preserve ratio: </label><input type="checkbox" name="preserve_ratio" {{ set_readonly }}>
+
+    
+    {% if calculate_info %}
+    <span class="badge badge-danger">{{ calculate_info }}</span>
+    {% endif %}
+
+    <br>
+    {% if not new_dims %}
+    <input type="submit" value="calculate" name="calculate">
+    {% else %}
+    <input type="submit" value="unlock" name="unlock" >
+    <input type="submit" value="download {{ new_dims.height }}x{{ new_dims.width }}" name="download" {{ download_disable }}>
+    {% endif %}
+</form>
+
+
+
+<br>
+
+{% if not new_dims %}
+<img class="article-img obrazek_tagowany" src="{{ meme.image.url }}">
+{% else %}
+<img class="article-img obrazek_tagowany" src="{{ meme.image.url }}" height="{{ new_dims.height }}" width="{{ new_dims.width }}">
+{% endif %}
+
+
+
+
+<br><br>
+{% endblock content %}

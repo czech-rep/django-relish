@@ -1,0 +1,55 @@
+body {
+  background: fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}  
+h1, h2, h3, h4, h5 {
+    /* color: #444444; */
+    text-align: center;
+  }
+  
+p {
+    font-family: verdana;
+    font-size: 20px;
+  }
+container {
+    background-color: blue;
+}
+.bg-steel {
+  background-color: #5f788a;
+}
+.papiez{
+  color: orange;
+}
+.obrazek_tagowany{
+  width: "500";
+  height: "600";
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img_group{
+  background-color: lightgrey;
+}
+.meme_box{
+  margin: 10px;
+  padding: 30px;
+  width: 300px;
+  height: 400px;
+  float: left;
+  background-color: Azure;
+  text-align: center;
+}
+.img_title{
+  text-align: center;
+}
+.img_box{
+  width: 250;
+  height: 250;
+}
+.img_content{
+  width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+}

@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+<h3>an error occured:</h3>
+{{ err_msg }}
+
+
+
+<br>
+<br>
+{% if request.META.HTTP_REFERER %}
+<a href="{{ request.META.HTTP_REFERER }}">go back</a>
+{% endif %}
+
+
+{% endblock content %}

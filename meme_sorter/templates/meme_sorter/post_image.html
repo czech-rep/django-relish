@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+<form method="POST" enctype='multipart/form-data'>
+    <h4><label for="image">dodaj obrazek:</label></h4>
+    <br>
+    <input type="file" id="image" name="image">
+    <br>
+    <button type="submit">wgraj</button>
+</form>
+
+<br><br>
+
+<h3>{{ info }}</h3>
+
+<br>pokaż tag:
+{% for tag in tags %}
+<a class="badge badge-info" href="{%url 'tag' tag.name%}">{{ tag.name }}</a>
+{% endfor %}
+
+<br><br>
+
+{% endblock content %}
+

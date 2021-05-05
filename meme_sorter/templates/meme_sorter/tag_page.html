@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h3>przegląd tagu: <u>{{ tag_name }}</u></h3>
+<a href='{% url "index" %}'>powrót</a>
+
+{% if mem_count %}
+    <br>przegląd memów ({{ mem_count }})<br><br>
+    {% for meme in memes %}
+    <a href="{% url 'image_details' meme.id %}">
+        <img src="{{ meme.image.url }}" width="200">
+    </a>
+    {% endfor %}
+{% else %}
+    nie znaleziono memów pod tym tagiem
+{% endif %}
+
+<br><br>wszystkie tagi:
+{% for tag in tags %}
+<a class="badge badge-info" href="{% url 'tag_name' tag.name %}">{{ tag.name }}</a>
+{% endfor %}
+
+
+{% endblock content %}

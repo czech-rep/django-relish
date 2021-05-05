@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-section">
+    create new post:
+    <form action="#" method="POST">
+        {% csrf_token %}
+        title: <input type="text" name="title"/>
+        <br/>
+        <input type="text" name="post"/>
+        <br/>
+        <input type="submit" value="Postuj cenzo">
+    </form>
+
+</div>
+
+{% endblock content %}

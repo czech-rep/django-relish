@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+<a href='{% url "index" %}'>powrót</a>
+
+dodaj obrazek:
+<form method="POST" enctype='multipart/form-data'>
+    {{ form.as_p }}
+    <button type="submit">wgraj</button>
+</form>
+
+
+
+{% endblock content %}
+

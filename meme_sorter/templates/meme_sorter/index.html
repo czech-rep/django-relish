@@ -1,0 +1,49 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<a href='{% url "post_image_form" %}'>dodaj</a>
+
+<div>
+    <br>przejrzyj <a href="#">tagi:</a>
+    {% for tag in tags %}
+    <a class="badge badge-info" href="{% url 'tag_name' tag.name %}">{{ tag.name }} ({{ tag.children }})</a>
+    {% endfor %}
+</div>
+
+<h3>{{ info }}</h3>
+<br>przegląd memów ({{ mem_count }})
+<br>
+
+<div class="img_group">
+    {% for meme in memes %}
+    <div class="meme_box">
+        <h5 class="img_title">{{ meme.title }}</h5> 
+        {% if meme.added_by %}
+        by: {{ meme.added_by }}
+        {% endif %}
+        <a class="badge badge-primary" href="{% url 'image_details' meme.id %}">szczegóły</a>
+        <a class="deletion badge badge-danger" href="{% url 'delete_image' meme.id %}">usuń</a>
+        <div class="img_box">
+            <a href="{% url 'image_details' meme.id %}">
+                <img class="img_content" src="{{ meme.image.url }}" onerror="this.src='/media/functionals/img_not_found.png'">
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<br>
+
+<br><br>
+
+<script src="{% static 'js/meme_sorter.js' %}"></script>
+<script>
+    meme_index();
+    
+</script>
+
+{% endblock content %}
+
